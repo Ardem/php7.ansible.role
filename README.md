@@ -57,6 +57,9 @@ Available variables are listed below, along with default values (see `defaults/m
     php_owner: nginx
     php_group: nginx
 
+    php_processes_owner: www-data
+    php_processes_group: www-data
+
 ### Note
 
 1. If you see some error message, maybe you need modify `php_owner` and `php_group` from **nginx** to **www-data**.

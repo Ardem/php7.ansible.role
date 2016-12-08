@@ -18,6 +18,14 @@
   lineinfile: "dest=/etc/php-fpm.d/www.conf state=present regexp='^;?listen = /run/php-fpm/www.sock' line='listen = /run/php-fpm/www.sock'"
   notify: restart php7-fpm on centos
 
+- name: Set permissions on processes - owner
+  lineinfile: "dest=/etc/php-fpm.d/www.conf state=present regexp='^user =' line='user = {{ php_processes_owner }}'"
+  notify: restart php7-fpm on centos
+
+- name: Set permissions on processes - group
+  lineinfile: "dest=/etc/php-fpm.d/www.conf state=present regexp='^group =' line='group = {{ php_processes_group}}'"
+  notify: restart php7-fpm on centos
+
 - name: Set permissions on socket - owner
   lineinfile: "dest=/etc/php-fpm.d/www.conf state=present regexp='^;?listen.owner' line='listen.owner = {{ php_owner }}'"
   notify: restart php7-fpm on centos

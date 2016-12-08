@@ -5,6 +5,12 @@
 
 - debug: msg="==> Setting  PHP7 configure"
 
+- name: Set permissions on processes - owner
+  lineinfile: "dest=/etc/php/7.0/fpm/pool.d/www.conf state=present regexp='^user = ' line='user = {{ php_processes_owner }}'"
+
+- name: Set permissions on processes - group
+  lineinfile: "dest=/etc/php/7.0/fpm/pool.d/www.conf state=present regexp='^group = ' line='group =  {{ php_processes_group}}'"
+
 - name: Set permissions on socket - owner
   lineinfile: "dest=/etc/php/7.0/fpm/pool.d/www.conf state=present regexp='^;?listen.owner' line='listen.owner = {{ php_owner }}'"
 

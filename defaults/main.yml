@@ -44,3 +44,6 @@ yum_php_packages:
 php_owner: nginx
 php_group: nginx
 
+php_processes_owner: www-data
+php_processes_group: www-data
+
